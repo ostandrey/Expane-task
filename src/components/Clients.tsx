@@ -2,7 +2,12 @@ import React from "react";
 
 const Clients = () => {
     return (
-        <div className="row">
+        <div className="shadow p-3 mb-5 bg-body rounded">
+            <button type="button"
+                    className="btn btn-success btn-lg "
+                    style={{margin: "10px 0"}}>
+                Add client
+            </button>
             <div className="list-group">
                 <button className="list-group-item list-group-item-action" aria-current="true">
                     <div className="d-flex w-100 justify-content-between">
