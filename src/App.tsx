@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import Clients from './components/Clients';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+        <h1 className="text-center m-4">Expane Clients</h1>
+        <button type="button" className="btn btn-success btn-lg" style={{margin: "10px 0"}}>
+            Add client
+        </button>
+        <Router>
+            <Switch>
+                <Route exact path = {'/clients'} component={Clients}/>
+                <Redirect from='/' to='/clients'/>
+            </Switch>
+
+        </Router>
     </div>
   );
-}
+};
 
 export default App;
