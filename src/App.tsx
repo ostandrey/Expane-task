@@ -2,10 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Clients from './components/Clients';
-import Client from './components/Client'
+import Client from './components/Client';
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
+      <QueryClientProvider client={queryClient}>
     <div className="container">
         <h1 className="text-center m-4">Expane Clients</h1>
         <Router>
@@ -16,6 +20,7 @@ const App = () => {
             </Switch>
         </Router>
     </div>
+      </QueryClientProvider>
   );
 };
 
