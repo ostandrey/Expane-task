@@ -5,7 +5,7 @@ import {useQuery} from "react-query";
 
 const Clients = () => {
     const clientsStore = useContext(ClientsStore);
-    const { clients, getClients } = clientsStore;
+    const { clients, getClients, selectClient } = clientsStore;
     useQuery("clients", () => {getClients()});
     return (
         <div className="shadow p-3 mb-5 bg-body rounded">
@@ -30,8 +30,16 @@ const Clients = () => {
                                 </div>
                             </div>
                             <div className="d-flex justify-content-end m-2">
-                                <button type="button" className="btn btn-outline-primary me-2">Update</button>
-                                <button type="button" className="btn btn-outline-danger">Delete</button>
+                                <Link to={'/client'}>
+                                    <button type="button"
+                                            className="btn btn-outline-primary me-2"
+                                            onClick={() => {
+                                                selectClient(client)
+                                            }}>
+                                        Update
+                                    </button>
+                                </Link>
+
                             </div>
                         </button>
                     ))

@@ -3,9 +3,9 @@ import ClientsStore from "../store/ClientsStore";
 import {Link} from "react-router-dom";
 
 const Client = () => {
-    const [firstName, setFirstName] = useState("");
     const clientsStore = useContext(ClientsStore);
-    const { addClient } = clientsStore;
+    const { updateClient, client } = clientsStore;
+    const [form, setForm] = useState({firstName: client ? client.firstName : ''});
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -13,16 +13,15 @@ const Client = () => {
                     <div className="mb-3">
                         <label className="form-label">First name</label>
                         <input type="text"
-                               value={firstName}
+                               value={form.firstName}
                                className="form-control"
                                placeholder="Bob"
-                               onChange={firstName => setFirstName(firstName.target.value)}
+                               onChange={firstName => setForm({...form, firstName: firstName.target.value})}
                         />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Surname</label>
                         <input type="text"
-
                                className="form-control"
                                placeholder="Bobson"
 
@@ -44,13 +43,14 @@ const Client = () => {
                         <button type="button"
                                 className="btn btn-success"
                                 onClick={_ => {
-                                    addClient({
-                                        firstName: firstName,
+                                    updateClient({
+                                        id: client?.id,
+                                        firstName: form.firstName,
                                         lastName: 'asa',
                                         phoneNumber: '232',
                                         avatarUrl: 'trytyyt',
                                     });
-                                    setFirstName('');
+                                    setForm({firstName: ''});
                                 }}
                         >
                             Add client</button>
