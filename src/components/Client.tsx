@@ -47,7 +47,7 @@ const Client = () => {
                                         id: client?.id,
                                         firstName: form.firstName,
                                         lastName: 'asa',
-                                        phoneNumber: '232',
+                                        phone: '232',
                                         avatarUrl: 'trytyyt',
                                     });
                                     setForm({firstName: ''});

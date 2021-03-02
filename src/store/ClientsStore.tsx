@@ -6,7 +6,7 @@ export interface Client {
     id?: string,
     firstName: string,
     lastName: string,
-    phoneNumber: string,
+    phone: string,
     avatarUrl: string
 }
 
@@ -14,19 +14,19 @@ const endpoint = "https://test-task.expane.pro/api/graphql";
 const graphQLClient = new GraphQLClient(endpoint);
 const CREATE_CLIENT_MUTATION = gql`
     mutation updtClient(
-    $id: String!,
+    $id: ID!,
     $firstName: String!, 
     $lastName: String!,
     $phone: String!,
     $avatarUrl: String!,
     ) {
-      updateClient(object: { 
-      id: $id
+      updateClient( 
+      id: $id,
       firstName: $firstName, 
       lastName: $lastName,
       phone: $phone,
       avatarUrl: $avatarUrl,
-       }) {
+      ) {
         id
         firstName
         lastName
@@ -42,8 +42,8 @@ class ClientsStore {
     }
 
     @observable clients: Client[] =[
-        { id: '1', firstName: 'Rob', lastName: 'Robson', phoneNumber: '0532', avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Rob_McElhenney_by_Gage_Skidmore_3.jpg'},
-        { id: '2', firstName: 'Dob', lastName: 'Pobson', phoneNumber: '789789797', avatarUrl: 'https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/2019/09/Kings_Of_Pain_Bio_Rob_Caveman_Avella.jpg?w=900'},
+        { id: '1', firstName: 'Rob', lastName: 'Robson', phone: '0532', avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e7/Rob_McElhenney_by_Gage_Skidmore_3.jpg'},
+        { id: '2', firstName: 'Dob', lastName: 'Pobson', phone: '789789797', avatarUrl: 'https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/2019/09/Kings_Of_Pain_Bio_Rob_Caveman_Avella.jpg?w=900'},
     ];
 
     @observable client: Client | null = null;

@@ -26,7 +26,7 @@ const Clients = () => {
                                 </div>
                                 <div className="d-flex flex-column ms-4">
                                     <h4 className="mb-1">{client.firstName} {client.lastName}</h4>
-                                    <small>Phone number: {client.phoneNumber}</small>
+                                    <small>Phone number: {client.phone}</small>
                                 </div>
                             </div>
                             <div className="d-flex justify-content-end m-2">
