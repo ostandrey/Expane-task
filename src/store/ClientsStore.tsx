@@ -26,6 +26,7 @@ class ClientsStore {
     @action getClients = async () => {
         const { getClients: clients } = await request(endpoint, GET_CLIENTS_MUTATION);
         this.clients = clients;
+        console.log(clients)
     };
 
     @action addClient = (client: IClient) => {

@@ -21,7 +21,9 @@ const Clients = () => {
                 {
                     clients.map(client =>
                         ( <ClientsListItem client={client}
-                                           selectClient={() => {selectClient(client)}}/> )
+                                           selectClient={() => {selectClient(client)}}
+                                           key={client.id}
+                        /> )
                         )
                 }
             </div>

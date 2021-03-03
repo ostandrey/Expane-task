@@ -10,7 +10,6 @@ const ClientsListItem = ({client, selectClient}: ClientsListItemProps) => {
     return (
         <li className="list-group-item list-group-item-action"
             aria-current="true"
-            key={client.id}
         >
             <div className="d-flex w-100">
                 <div style={{width: "10rem"}}>
