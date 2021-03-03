@@ -4,8 +4,13 @@ import {Link} from "react-router-dom";
 
 const Client = () => {
     const clientsStore = useContext(ClientsStore);
-    const { updateClient, client } = clientsStore;
-    const [form, setForm] = useState({firstName: client ? client.firstName : ''});
+    const { updateClient, addClient, client } = clientsStore;
+    const [form, setForm] = useState({
+        firstName: client ? client.firstName : '',
+        lastName: client ? client.lastName : '',
+        phone: client ? client.phone : '',
+        avatarUrl: client ? client.avatarUrl : '',
+    });
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -24,36 +29,62 @@ const Client = () => {
                         <input type="text"
                                className="form-control"
                                placeholder="Bobson"
-
+                               value={form.lastName}
+                               onChange={lastName => setForm({...form, lastName: lastName.target.value})}
                         />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Phone number</label>
                         <input type="text"
                                className="form-control"
-                               placeholder="+380501111111"/>
+                               placeholder="+380501111111"
+                               value={form.phone}
+                               onChange={phone => setForm({...form, phone: phone.target.value})}
+
+                        />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Photo url</label>
                         <input type="text"
                                className="form-control"
-                               placeholder="URL"/>
+                               placeholder="URL"
+                               value={form.avatarUrl}
+                               onChange={avatarUrl => setForm({...form, avatarUrl: avatarUrl.target.value})}
+                        />
                     </div>
                     <div>
-                        <button type="button"
-                                className="btn btn-success"
-                                onClick={_ => {
-                                    updateClient({
-                                        id: client?.id,
-                                        firstName: form.firstName,
-                                        lastName: 'asa',
-                                        phone: '232',
-                                        avatarUrl: 'trytyyt',
-                                    });
-                                    setForm({firstName: ''});
-                                }}
-                        >
-                            Add client</button>
+                        {
+                            client ?
+                                <button type="button"
+                                             className="btn btn-success"
+                                             onClick={_ => {
+                                                 updateClient({
+                                                     id: client?.id,
+                                                     firstName: form.firstName,
+                                                     lastName: form.lastName,
+                                                     phone: form.phone,
+                                                     avatarUrl: form.avatarUrl,
+                                                 });
+                                                 setForm({firstName: '', lastName: '', phone: '', avatarUrl: ''});
+                                             }}
+                                >
+                                    Update client
+                                </button>
+                                : <button type="button"
+                                          className="btn btn-success"
+                                          onClick={_ => {
+                                              addClient({
+                                                       firstName: form.firstName,
+                                                       lastName: form.lastName,
+                                                       phone: form.phone,
+                                                       avatarUrl: form.avatarUrl,
+                                                   });
+                                                   setForm({firstName: '', lastName: '', phone: '', avatarUrl: ''});
+                                               }}
+                                >
+                                    Add client
+                                </button>
+                        }
                         <button type="button"
                                 className="btn btn-success btn-lg "
                                 style={{margin: "10px 0"}}

@@ -5,21 +5,24 @@ import {useQuery} from "react-query";
 
 const Clients = () => {
     const clientsStore = useContext(ClientsStore);
-    const { clients, getClients, selectClient } = clientsStore;
+    const { clients, getClients, selectClient, resetClient } = clientsStore;
     useQuery("clients", () => {getClients()});
     return (
         <div className="shadow p-3 mb-5 bg-body rounded">
             <button type="button"
-                    className="btn btn-success btn-lg "
+                    className="btn btn-success btn-lg"
                     style={{margin: "10px 0"}}
-
+                    onClick={() => { resetClient()}}
             >
                 <Link to={'/client'}>Add client</Link>
             </button>
             <div className="list-group">
                 {
                     clients.map(client => (
-                        <button className="list-group-item list-group-item-action" aria-current="true">
+                        <li className="list-group-item list-group-item-action"
+                                aria-current="true"
+                                key={client.id}
+                        >
                             <div className="d-flex w-100">
                                 <div style={{width: "10rem"}}>
                                     <img src={client.avatarUrl} className="rounded img-thumbnail" alt="avatar"/>
@@ -39,9 +42,8 @@ const Clients = () => {
                                         Update
                                     </button>
                                 </Link>
-
                             </div>
-                        </button>
+                        </li>
                     ))
                 }
             </div>
