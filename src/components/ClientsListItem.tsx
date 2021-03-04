@@ -8,30 +8,37 @@ type ClientsListItemProps = {
 }
 const ClientsListItem = ({client, selectClient}: ClientsListItemProps) => {
     return (
-        <li className="list-group-item list-group-item-action"
-            aria-current="true"
-        >
-            <div className="d-flex w-100">
-                <div style={{width: "10rem"}}>
-                    <img src={client.avatarUrl} className="rounded img-thumbnail" alt="avatar"/>
+        <tr>
+            <td className="px-6 py-4 whitespace-nowrap">
+                <div className="flex items-center">
+                    <div className="flex-shrink-0 h-10 w-10">
+                        <img className="h-10 w-10 rounded-full"
+                             src={client.avatarUrl}
+                             alt="avatar"/>
+                    </div>
+                    <div className="ml-4">
+                        <div className="text-sm font-medium text-gray-900">
+                            {client.firstName} {client.lastName}
+                        </div>
+                    </div>
                 </div>
-                <div className="d-flex flex-column ms-4">
-                    <h4 className="mb-1">{client.firstName} {client.lastName}</h4>
-                    <small>Phone number: {client.phone}</small>
-                </div>
-            </div>
-            <div className="d-flex justify-content-end m-2">
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+                <div className="text-sm text-gray-900">{client.phone}</div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <Link to={'/client'}>
                     <button type="button"
-                            className="btn btn-outline-primary me-2"
+                            className="bg-lightBlue-600 text-white px-3 py-2 rounded
+                            hover:bg-lightBlue-800"
                             onClick={() => {
                                 selectClient(client)
                             }}>
                         Update
                     </button>
                 </Link>
-            </div>
-        </li>
+            </td>
+        </tr>
     )
 };
 

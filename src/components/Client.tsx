@@ -12,31 +12,35 @@ const Client = () => {
         avatarUrl: client ? client.avatarUrl : '',
     });
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-8 shadow p-3 mb-5 bg-body rounded">
-                    <div className="mb-3">
-                        <label className="form-label">First name</label>
-                        <input type="text"
-                               value={form.firstName}
-                               className="form-control"
-                               placeholder="Bob"
-                               onChange={firstName => setForm({...form, firstName: firstName.target.value})}
-                        />
+        <div className="text-gray-500">
+                <form className="px-4 my-10 max-w-3xl mx-auto space-y-6">
+                    <div className="flex space-x-4">
+                        <div className="w-1/2 mb-3">
+                            <label className="font-semibold">First name</label>
+                            <input type="text"
+                                   value={form.firstName}
+                                   className="border border-gray-400 block py-2 px-4 w-full rounded
+                               focus:outline-none focus:border-teal-500"
+                                   placeholder="Bob"
+                                   onChange={firstName => setForm({...form, firstName: firstName.target.value})}
+                            />
+                        </div>
+                        <div className="w-1/2 mb-3">
+                            <label className="font-semibold">Surname</label>
+                            <input type="text"
+                                   className="border border-gray-400 block py-2 px-4 w-full rounded
+                               focus:outline-none focus:border-teal-500"
+                                   placeholder="Bobson"
+                                   value={form.lastName}
+                                   onChange={lastName => setForm({...form, lastName: lastName.target.value})}
+                            />
+                        </div>
                     </div>
-                    <div className="mb-3">
-                        <label className="form-label">Surname</label>
+                    <div className="w-1/2 mb-3">
+                        <label className="font-semibold">Phone number</label>
                         <input type="text"
-                               className="form-control"
-                               placeholder="Bobson"
-                               value={form.lastName}
-                               onChange={lastName => setForm({...form, lastName: lastName.target.value})}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label">Phone number</label>
-                        <input type="text"
-                               className="form-control"
+                               className="border border-gray-400 block py-2 px-4 w-full rounded
+                               focus:outline-none focus:border-teal-500"
                                placeholder="+380501111111"
                                value={form.phone}
                                onChange={phone => setForm({...form, phone: phone.target.value})}
@@ -44,9 +48,10 @@ const Client = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="form-label">Photo url</label>
+                        <label className="font-semibold">Photo url</label>
                         <input type="text"
-                               className="form-control"
+                               className="border border-gray-400 block py-2 px-4 w-full rounded
+                               focus:outline-none focus:border-teal-500"
                                placeholder="URL"
                                value={form.avatarUrl}
                                onChange={avatarUrl => setForm({...form, avatarUrl: avatarUrl.target.value})}
@@ -56,7 +61,8 @@ const Client = () => {
                         {
                             client ?
                                 <button type="button"
-                                             className="btn btn-success"
+                                             className="bg-lightBlue-600 px-5 py-3 text-white
+                                             hover:bg-lightBlue-800 rounded max-w-md mx-auto"
                                              onClick={_ => {
                                                  updateClient({
                                                      id: client?.id,
@@ -71,7 +77,8 @@ const Client = () => {
                                     Update client
                                 </button>
                                 : <button type="button"
-                                          className="btn btn-success"
+                                          className="bg-teal-600 px-5 py-3 text-white
+                                          hover:bg-teal-500 rounded max-w-md mx-auto"
                                           onClick={_ => {
                                               addClient({
                                                        firstName: form.firstName,
@@ -86,15 +93,13 @@ const Client = () => {
                                 </button>
                         }
                         <button type="button"
-                                className="btn btn-success btn-lg "
-                                style={{margin: "10px 0"}}
-
+                                className="ml-2 bg-blueGray-600 px-5 py-3 text-white
+                                          hover:bg-blueGray-700 rounded max-w-md mx-auto"
                         >
                             <Link to={'/clients'}>Back</Link>
                         </button>
                     </div>
-                </div>
-            </div>
+                </form>
         </div>
 
     )
