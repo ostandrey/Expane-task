@@ -9,10 +9,10 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
       <QueryClientProvider client={queryClient}>
-          <div className="bg-gradientFirstColor bg-gradient-t to-gradient-SecondColor font-monospace">
-              <div className="bg-gradient-to-br from-gradientSecondColor">
-                  <div className="p-20">
-                      <div className="p-10 bg-white rounded-lg shadow-xl ">
+          <div className=" font-monospace ">
+
+                  <div className="p-10 ">
+                      <div className="p-10 bg-white rounded-lg shadow-xl h-full">
                           <h1 className="text-center m-2 text-3xl font-semibold text-gray-600">Expane Clients</h1>
                           <Router>
                               <Switch>
@@ -23,7 +23,7 @@ const App = () => {
                           </Router>
                       </div>
                   </div>
-              </div>
+
           </div>
       </QueryClientProvider>
   );

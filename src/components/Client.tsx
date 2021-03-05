@@ -92,12 +92,14 @@ const Client = () => {
                                     Add client
                                 </button>
                         }
-                        <button type="button"
-                                className="ml-2 bg-blueGray-600 px-5 py-3 text-white
-                                          hover:bg-blueGray-700 rounded max-w-md mx-auto"
-                        >
-                            <Link to={'/clients'}>Back</Link>
-                        </button>
+                        <Link to={'/clients'}>
+                            <button type="button"
+                                    className="ml-2 bg-blueGray-600 px-5 py-3 text-white
+                                              hover:bg-blueGray-700 rounded max-w-md mx-auto"
+                            >
+                                Back
+                            </button>
+                        </Link>
                     </div>
                 </form>
         </div>
